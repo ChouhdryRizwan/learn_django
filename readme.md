@@ -130,14 +130,14 @@ When you have installed Django and created your first Django web application, an
 
 * Type the following in the command prompt, remember to navigate to where you want to create your project:
 
-
 `Windows:` 
 
-    (myworld) C:\Users\Your Name>
+    py -m venv myworld
 
 `Unix/MacOS:`    
 
-    (myworld) ... $
+    python -m venv myworld
+
 
 `Note:`
 
