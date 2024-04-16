@@ -138,17 +138,17 @@ Start by navigating to the selected location where you want to store the app, in
 Django creates a folder named projects in my project, with this content:
 
         my_portfolio_app
-    manage.py
-    my_portfolio_app/
-    project/
-        migrations/
-            __init__.py
-        __init__.py
-        admin.py
-        apps.py
-        models.py
-        tests.py
-        views.py
+             manage.py
+             my_portfolio_app/
+             project/
+                migrations/
+                      __init__.py
+                __init__.py
+                admin.py
+                apps.py
+                models.py
+                tests.py
+                views.py
 
 These are all files and folders with a specific meaning. You will learn about most of them later in this tutorial.    
 
@@ -209,7 +209,7 @@ my_portfolio_app/project/urls.py:
 
 
 
-The `urls.py` file you just created is specific for the `members` application. We have to do some routing in the root directory `my_portfolio_app` as well. This may seem complicated, but for now, just follow the instructions below.
+The `urls.py` file you just created is specific for the `projects` application. We have to do some routing in the root directory `my_portfolio_app` as well. This may seem complicated, but for now, just follow the instructions below.
 
 There is a file called `urls.py` on the my_portfolio_app folder, open that file and add the `include` module in the `import` statement, and also add a `path()` function in the `urlpatterns[]` list, with arguments that will route users that comes in via `127.0.0.1:8000/.`
 
