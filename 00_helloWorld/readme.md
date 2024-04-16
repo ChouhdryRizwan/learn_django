@@ -4,7 +4,6 @@ Now, that we have created a virtual environment, we are ready to install Django.
 
 ## Note: Remember to install Django while you are in the virtual environment!
 
-
 `Django is installed using pip, with this command:`
 
 `Windows:`
@@ -15,7 +14,7 @@ Now, that we have created a virtual environment, we are ready to install Django.
 
         (myworld) ... $ python -m pip install Django
 
-`Which will give a result that looks like this (at least on my Windows machine):`  
+`Which will give a result that looks like this (at least on my Windows machine):`
 
         Collecting Django
         Downloading Django-4.0.3-py3-none-any.whl (8.0 MB)
@@ -29,7 +28,6 @@ Now, that we have created a virtual environment, we are ready to install Django.
       |████████████████████████████████| 339 kB 6.4 MB/s
     Installing collected packages: sqlparse, asgiref, tzdata, Django
     Successfully installed Django-4.0.3 asgiref-3.5.0 sqlparse-0.4.2 tzdata-2021.5
-
 
 ` That's it! Now you have installed Django in your new project, running in a virtual environment!`
 
@@ -45,7 +43,7 @@ You can run this project on either one. There are some small differences, like w
 
     django-admin --version
 
-`In the rest of this tutorial, we will be using the Windows command.` 
+`In the rest of this tutorial, we will be using the Windows command.`
 
 ## Check Django Version
 
@@ -53,15 +51,14 @@ If Django is installed, you will get a result with the version number:
 
         5.0.4
 
-
 # Django Create Project
 
 ## My First Project
 
-Once you have come up with a suitable name for your Django project, like mine: 
+Once you have come up with a suitable name for your Django project, like mine:
 `my_portfolio_app`, navigate to where in the file system you want to store the code (in the virtual environment), I will navigate to the myworld folder, and run this command in the command prompt:
 
-        django-admin startproject my_portfolio_app 
+        django-admin startproject my_portfolio_app
 
 Django creates a my_portfolio_app folder on my computer, with this content:
 
@@ -132,7 +129,7 @@ I will name my app `projects.`
 Start by navigating to the selected location where you want to store the app, in my case the `my_portfolio_app` folder, and run the command below.
 
 `If the server is still running, and you are not able to write commands, press [CTRL] [BREAK], or [CTRL] [C] to stop the server and you should be back in the virtual environment.`
-                
+
         py manage.py startapp projects
 
 Django creates a folder named projects in my project, with this content:
@@ -150,7 +147,7 @@ Django creates a folder named projects in my project, with this content:
                 tests.py
                 views.py
 
-These are all files and folders with a specific meaning. You will learn about most of them later in this tutorial.    
+These are all files and folders with a specific meaning. You will learn about most of them later in this tutorial.
 
 First, take a look at the file called `views.py.`
 
@@ -173,7 +170,7 @@ There is a `views.py` in your `project` folder that looks like this:
         from django.shortcuts import render
         # Create your views here.
 
-Find it and open it, and replace the content with this: 
+Find it and open it, and replace the content with this:
 
 `my_portfolio_app/project/views.py:`
 
@@ -187,19 +184,18 @@ Find it and open it, and replace the content with this:
 
 I call it `project` because I think it fits well in this context.
 
-
 This is a simple example on how to send a response back to the browser.
 
 But how can we execute the view? Well, we must call the view via a URL.
 
-
 ## Django URLs
+
 # URLs
 
 Create a file named `urls.py` in the same folder as the `views.py` file, and type this code in it:
 
 my_portfolio_app/project/urls.py:
-        
+
         from django.urls import path
         from . import views
 
@@ -207,12 +203,9 @@ my_portfolio_app/project/urls.py:
          path('projects/', views.project, name='projects'),
         ]
 
-
-
 The `urls.py` file you just created is specific for the `projects` application. We have to do some routing in the root directory `my_portfolio_app` as well. This may seem complicated, but for now, just follow the instructions below.
 
 There is a file called `urls.py` on the my_portfolio_app folder, open that file and add the `include` module in the `import` statement, and also add a `path()` function in the `urlpatterns[]` list, with arguments that will route users that comes in via `127.0.0.1:8000/.`
-
 
 my_portfolio_app/my_portfolio_app/urls.py:
 
@@ -226,8 +219,12 @@ my_portfolio_app/my_portfolio_app/urls.py:
 
 If the server is not running, navigate to the `/my_portfolio_app` folder and execute this command in the command prompt:
 
+        py manage.py runserver
+
+In the browser window, type `127.0.0.1:8000/projects/` in the address bar.
 
 ## Django Templates
+
 # Templates
 
 In the `Django Intro` page, we learned that the result should be in HTML, and it should be created in a template, so let's do that.
@@ -240,8 +237,8 @@ The file structure should be like this:
          manage.py
          my_portfolio_app/
          projects/
-         templates/
-            myfirst.html
+            templates/
+               myfirst.html
 
 Open the HTML file and insert the following:
 
@@ -284,6 +281,145 @@ my_portfolio_app/my_portfolio_app/settings.py:
 
         py manage.py migrate
 
-Which will produce this output:        
+Which will produce this output:
 
+        Operations to perform:
+        Apply all migrations: admin, auth, contenttypes, sessions
+        Running migrations:
+        Applying contenttypes.0001_initial... OK
+        Applying auth.0001_initial... OK
+        Applying admin.0001_initial... OK
+        Applying admin.0002_logentry_remove_auto_add... OK
+        Applying admin.0003_logentry_add_action_flag_choices... OK
+        Applying contenttypes.0002_remove_content_type_name... OK
+        Applying auth.0002_alter_permission_name_max_length... OK
+        Applying auth.0003_alter_user_email_max_length... OK
+        Applying auth.0004_alter_user_username_opts... OK
+        Applying auth.0005_alter_user_last_login_null... OK
+        Applying auth.0006_require_contenttypes_0002... OK
+        Applying auth.0007_alter_validators_add_error_messages... OK
+        Applying auth.0008_alter_user_username_max_length... OK
+        Applying auth.0009_alter_user_last_name_max_length... OK
+        Applying auth.0010_alter_group_name_max_length... OK
+        Applying auth.0011_update_proxy_permissions... OK
+        Applying auth.0012_alter_user_first_name_max_length... OK
+        Applying sessions.0001_initial... OK
+
+Start the server by navigating to the `/my_portfolio_app` folder and execute this command:
+
+In the browser window, type `127.0.0.1:8000/projects/` in the address bar.
+
+## Django Models
+
+A Django model is a table in your database.
+
+# Django Models
+
+Up until now in this tutorial, output has been static data from Python or HTML templates.
+
+Now we will see how Django allows us to work with data, without having to change or upload files in the prosess.
+
+In Django, data is created in objects, called Models, and is actually tables in a database.
+
+## Create Table (Model)
+
+To create a model, navigate to the `models.py` file in the `/projects/` folder.
+
+Open it, and add a `Project` table by creating a `Project class`, and describe the table fields in it:
+
+        class Project(models.Model):
+        projectname = models.CharField(max_length=255)
+        projectcategory = models.CharField(max_length=255)
+
+The first field, projectname, is a Text field, and will contain the project name of the projects.
+
+The second field, projectcategory, is also a Text field, with the project category name.
+
+Both projectname and projectcategory is set up to have a maximum of 255 characters.
+
+## SQLite Database
+
+When we created the Django project, we got an empty SQLite database.
+
+It was created in the my_portfolio_app root folder, and has the filename db.sqlite3.
+
+By default, all Models created in the Django project will be created as tables in this database.
+
+# Migrate
+
+Now when we have described a Model in the `models.py` file, we must run a command to actually create the table in the database.
+
+Navigate to the /my_portfolio_app/ folder and run this command:
+
+        py manage.py makemigrations members
+
+Which will result in this output:
+
+        Migrations for 'projects':
+        projects\migrations\0001_initial.py
+        - Create model Project
+
+        (myworld) D:\Learn Django\learn_django\00_helloWorld\myworld\my_portfolio_app>
+
+Django creates a file describing the changes and stores the file in the /migrations/ folder:
+
+        # Generated by Django 5.0.4 on 2024-04-16 19:36
+
+        from django.db import migrations, models
+
+
+        class Migration(migrations.Migration):
+
+        initial = True
+
+        dependencies = [
+        ]
+
+        operations = [
+                migrations.CreateModel(
+                name='Project',
+                fields=[
+                        ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                        ('projectname', models.CharField(max_length=255)),
+                        ('projectcategory', models.CharField(max_length=255)),
+                ],
+                ),
+        ]
+
+
+Note that Django inserts an id field for your tables, which is an auto increment number (first record gets the value 1, the second record 2 etc.), this is the default behavior of Django, you can override it by describing your own id field.
+
+The table is not created yet, you will have to run one more command, then Django will create and execute an SQL statement, based on the content of the new file in the /migrations/ folder.
+
+Run the migrate command:
+
+        py manage.py migrate
+
+Which will result in this output:
+
+        Operations to perform:
+        Apply all migrations: admin, auth, contenttypes, projects, sessions
+        Running migrations:
+        Applying projects.0001_initial... OK
+
+        (myworld) D:\Learn Django\learn_django\00_helloWorld\myworld\my_portfolio_app>
+
+`Now you have a Project table in you database!`    
+
+# View SQL
+
+As a side-note: you can view the SQL statement that were executed from the migration above. All you have to do is to run this command, with the migration number:
+
+        py manage.py sqlmigrate projects 0001
+
+Which will result in this output:
+
+        BEGIN;
+        --
+        -- Create model Project
+        --
+        CREATE TABLE "projects_project" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "projectname" varchar(255) NOT NULL, "projectcategory" varchar(255) NOT NULL);
+        COMMIT;
+
+        (myworld) D:\Learn Django\learn_django\00_helloWorld\myworld\my_portfolio_app>
 
