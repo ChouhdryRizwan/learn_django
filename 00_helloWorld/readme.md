@@ -253,7 +253,7 @@ my_portfolio_app/projects/views.py:
         from django.http import HttpResponse
         from django.template import loader
 
-        def members(request):
+        def projects(request):
          template = loader.get_template('myfirst.html')
          return HttpResponse(template.render())
 
@@ -351,7 +351,7 @@ Now when we have described a Model in the `models.py` file, we must run a comman
 
 Navigate to the /my_portfolio_app/ folder and run this command:
 
-        py manage.py makemigrations members
+        py manage.py makemigrations projects
 
 Which will result in this output:
 
@@ -423,3 +423,118 @@ Which will result in this output:
 
         (myworld) D:\Learn Django\learn_django\00_helloWorld\myworld\my_portfolio_app>
 
+# Django Insert Data
+## Add Records
+
+The Projects table created in the previous code is empty.
+
+We will use the Python interpreter (Python shell) to add some members to it.
+
+`To open a Python shell, type this command:`
+
+        py manage.py shell
+
+
+`Now we are in the shell, the result should be something like this:`        
+
+        Python 3.12.1 (tags/v3.12.1:2305ca5, Dec  7 2023, 22:03:25) [MSC v.1937 64 bit (AMD64)] on win32
+        Type "help", "copyright", "credits" or "license" for more information.
+        (InteractiveConsole)
+        >>>
+
+`At the bottom, after the three >>> write the following:`   
+
+        from projects.models import Project
+
+`Hit [enter] and write this to look at the empty Project table:`
+
+        Project.objects.all()
+
+`This should give you an empty QuerySet object, like this:`
+
+        <QuerySet []>
+
+A QuerySet is a collection of data from a database.
+
+Read more about QuerySets in latter chapter.
+
+Add a record to the table, by executing these two lines:        
+
+        project = Project(projectname='firstproject', projectcategory='firstcategory')
+        project.save()
+
+`Execute this command to see if the Member table got a member:`
+
+        Project.objects.all().values()
+
+`Hopefully, the result will look like this:`
+
+                <QuerySet [{'id': 1, 'projectname': 'firstproject', 'projectcategory': 'firstcategory'}]>
+
+
+# Django Update Model
+## Add Fields in the Model
+
+`To add a field to a table after it is created, open the models.py file, and make your changes:`
+
+my_portfolio_app/projects/models.py:
+
+        from django.db import models
+
+        class Project(models.Model):
+        projectname = models.CharField(max_length=255)
+        projectcategory = models.CharField(max_length=255)
+        project_image = models.ImageField(),
+        project_date = models.DateField(),
+
+As you can see, we want to add Project Image and Project Date to our Project Model.
+
+This is a change in the Model's structure, and therefor we have to make a migration to tell Django that it has to update the database:        
+
+        py manage.py makemigrations projects
+
+
+Which, in my case, will result in a prompt, because I try to add fields that are not allowed to be null, to a table that already contains records.
+
+As you can see, Django asks if I want to provide the fields with a specific value, or if I want to stop the migration and fix it in the model:        
+
+        py manage.py makemigrations projects
+        You are trying to add a non-nullable field 'project_date' to projects without a default; we can't do that (the database needs something to populate existing rows).
+        Please select a fix:
+        1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+        2) Quit, and let me add a default in models.py
+        Select an option:
+
+
+I will select option 2, and open the models.py file again and allow NULL values for the two new fields:
+
+my_portfolio_app/projects/models.py:
+
+        from django.db import models
+
+        class Project(models.Model):
+        projectname = models.CharField(max_length=255)
+        projectcategory = models.CharField(max_length=255)
+        project_image = models.ImageField(null=True),
+        project_date = models.DateField(null=True),
+
+`And make the migration once again:`
+        
+        py manage.py makemigrations projects
+
+Which will result in this:
+
+                Migrations for 'projects':
+  projects\migrations\0002_project_project_image_project_date.py
+    - Add field project_image to project
+    - Add field project_date to project   
+
+`Run the migrate command:`
+
+        py manage.py migrate
+
+`Which will result in this output:`        
+
+        ...
+
+## Insert Data        
