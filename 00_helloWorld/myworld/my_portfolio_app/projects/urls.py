@@ -2,13 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('projects/', views.projects , name='projects'),
+    path('', views.Home , name='Home'),
+    path('projects/', views.Project , name='projects'),
+    path('categories/', views.Category , name='categories'),
+    
 ]
-
-
-# from django.http import HttpResponse
-# from django.template import loader
-
-# def members(request):
-#   template = loader.get_template('myfirst.html')
-#   return HttpResponse(template.render())
