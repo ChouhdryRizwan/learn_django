@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Projects</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>This is our Project Page</h1>
-</body>
+    <a href="/">Home</a> &nbsp;&nbsp; <a href="/categories">Categories</a>
+    <br />
+    <h2>Our 1st Project Name is {{ projectname }}.</h2>
+
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+    {% endif %}
+    <br />
+
+    <h2>Our Portfolio</h2>
+    {% for proj in projects %}
+    <h3>{{ proj.name }}</h3>
+    <p>{{ proj.category }}</p>
+    <a href="{{ proj.link }}" target="_blank">Visit</a>
+    {% endfor %}
+  </body>
 </html>

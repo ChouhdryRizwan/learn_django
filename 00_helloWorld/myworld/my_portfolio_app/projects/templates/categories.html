@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Categories</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>This is our Categories Page</h1>
-</body>
+    <a href="/">Home</a> &nbsp;&nbsp; <a href="/projects">Project</a> <br />
+
+    <h2>Our Experties in:</h2>
+    <ul>
+      {% for cat_name in categories %}
+      <li>{{ cat_name }}</li>
+      {% endfor %}
+    </ul>
+  </body>
 </html>

@@ -3,8 +3,19 @@
 
 <body>
 
-    <h1>Hello World!</h1>
+    <h1>Home</h1>
     <p>Welcome to my first Django project!</p>
+    <a href="/categories">Categories</a> &nbsp;&nbsp;
+    <a href="/projects">Project</a>
+
+    {% with greeting=1 %}
+    {% if greeting == 1 %}
+    <h1>Hello</h1>
+    {% else %}
+    <h1>Bye</h1>
+    {% endif %}
+    {% endwith %}
+
 
 </body>
 

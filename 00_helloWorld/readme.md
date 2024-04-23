@@ -309,4 +309,4 @@ Start the server by navigating to the `/my_portfolio_app` folder and execute thi
 
 In the browser window, type `127.0.0.1:8000/projects/` in the address bar.
 
-`For create multiple pages and set routing visit 01_createRoutes Step.`
+`For create multiple pages and set routing visit Step 01_createRoutes.`

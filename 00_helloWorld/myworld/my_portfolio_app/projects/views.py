@@ -10,8 +10,32 @@ def Home(request):
 
 def Project(request):
   template = loader.get_template('projects.html')
-  return HttpResponse(template.render())
+  # context = {
+  #   'projectname': 'NNjewellers',
+  #   'greeting':1,
+  # }
+  context = {
+    'projects': [
+      {
+        'name': 'NN Jewellers',
+        'category': 'Web Designing',
+        'link': 'https://nnjewelers.pk/'
+      },{
+        'name': 'Leather Crafted',
+        'category': 'Web Development',
+        'link': 'https://leathercrafted.store/'
+      },{
+        'name': 'Hiller Group',
+        'category': 'Web Designing',
+        'link': 'https://hillergroup.co.uk/'
+      },
+      ]
+    }
+  return HttpResponse(template.render(context,request))
 
 def Category(request):
   template = loader.get_template('categories.html')
-  return HttpResponse(template.render())
+  context = {
+    'categories': ['Web Designing', 'Web Development', 'Graphic Designing'],   
+  }
+  return HttpResponse(template.render(context,request))
