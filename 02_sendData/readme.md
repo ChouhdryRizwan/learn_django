@@ -289,30 +289,30 @@ In the browser window, type 127.0.0.1:8000/projects/ in the address bar.
 
 1. Naviagte to the `views.py` file and update Project function:
 
-    def Project(request):
-    template = loader.get_template('projects.html')
-    `#` context = {
-    `#`   'projectname': 'NNjewellers',
-    `#`   'greeting':1,
-    `#` }
-    context = {
-        'projects': [
-        {
-            'name': 'NN Jewellers',
-            'category': 'Web Designing',
-            'link': 'https://nnjewelers.pk/'
-        },{
-            'name': 'Leather Crafted',
-            'category': 'Web Development',
-            'link': 'https://leathercrafted.store/'
-        },{
-            'name': 'Hiller Group',
-            'category': 'Web Designing',
-            'link': 'https://hillergroup.co.uk/'
-        },
-        ]
-        }
-    return HttpResponse(template.render(context,request))
+        def Project(request):
+        template = loader.get_template('projects.html')
+        `#` context = {
+        `#`   'projectname': 'NNjewellers',
+        `#`   'greeting':1,
+        `#` }
+        context = {
+            'projects': [
+            {
+                'name': 'NN Jewellers',
+                'category': 'Web Designing',
+                'link': 'https://nnjewelers.pk/'
+            },{
+                'name': 'Leather Crafted',
+                'category': 'Web Development',
+                'link': 'https://leathercrafted.store/'
+            },{
+                'name': 'Hiller Group',
+                'category': 'Web Designing',
+                'link': 'https://hillergroup.co.uk/'
+            },
+            ]
+            }
+        return HttpResponse(template.render(context,request))
 
 
 2. Navigate to the `projects.html` under the templates folder in our app (`project`) directory and paste code:
