@@ -341,3 +341,9 @@ In the browser window, type 127.0.0.1:8000/projects/ in the address bar.
             {% endfor %}
         </body>
         </html>
+
+If the server is not running, navigate to the /my_portfolio_app folder and execute this command in the command prompt:
+
+    py manage.py runserver
+
+In the browser window, type 127.0.0.1:8000/projects/ in the address bar.         
