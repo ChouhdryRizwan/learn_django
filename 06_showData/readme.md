@@ -33,34 +33,34 @@ In the browser window, type 127.0.0.1:8000/categories/ in the address bar.
 
 2. Now you have to update the `ProjectPage` function and paste this code:
 
-    def ProjectPage(request):
-    template = loader.get_template('projects.html')
-    my_Project = Project.objects.all()
-    project_Images = ProjectImage.objects.all()
-    # context = {
-    #   'projectname': 'NNjewellers',
-    #   'greeting':1,
-    # }
-    context = {
-        'projects': my_Project,
-        'project_Images': project_Images,
-        # 'projects': [
-        #   {
-        #     'name': 'NN Jewellers',
-        #     'category': 'Web Designing',
-        #     'link': 'https://nnjewelers.pk/'
-        #   },{
-        #     'name': 'Leather Crafted',
-        #     'category': 'Web Development',
-        #     'link': 'https://leathercrafted.store/'
-        #   },{
-        #     'name': 'Hiller Group',
-        #     'category': 'Web Designing',
-        #     'link': 'https://hillergroup.co.uk/'
-        #   },
-        #   ]
-        }
-    return HttpResponse(template.render(context,request))
+        def ProjectPage(request):
+        template = loader.get_template('projects.html')
+        my_Project = Project.objects.all()
+        project_Images = ProjectImage.objects.all()
+        `#` context = {
+        `#`   'projectname': 'NNjewellers',
+        `#`   'greeting':1,
+        `#` }
+        context = {
+            'projects': my_Project,
+            'project_Images': project_Images,
+            `#` 'projects': [
+            `#`   {
+            `#`     'name': 'NN Jewellers',
+            `#`     'category': 'Web Designing',
+            `#`     'link': 'https://nnjewelers.pk/'
+            `#`   },{
+            `#`     'name': 'Leather Crafted',
+            `#`     'category': 'Web Development',
+            `#`     'link': 'https://leathercrafted.store/'
+            `#`   },{
+            `#`     'name': 'Hiller Group',
+            `#`     'category': 'Web Designing',
+            `#`     'link': 'https://hillergroup.co.uk/'
+            `#`   },
+            `#`   ]
+            }
+        return HttpResponse(template.render(context,request))
 
 4. You also have to update the `urls.py` file located in project `app` folder and paste this code.
 
