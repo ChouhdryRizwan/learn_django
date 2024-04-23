@@ -291,10 +291,10 @@ In the browser window, type 127.0.0.1:8000/projects/ in the address bar.
 
     def Project(request):
     template = loader.get_template('projects.html')
-    # context = {
-    #   'projectname': 'NNjewellers',
-    #   'greeting':1,
-    # }
+    `#` context = {
+    `#`   'projectname': 'NNjewellers',
+    `#`   'greeting':1,
+    `#` }
     context = {
         'projects': [
         {
