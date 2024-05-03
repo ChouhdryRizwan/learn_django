@@ -111,3 +111,33 @@ Now start the server:
     py manage.py runserver
 
 In the browser window, type 127.0.0.1:8000/projects/ in the address bar.
+
+## To show images in app you have to do some basic settings:
+
+1. First of all goto your project setting file `settings.py` located in projects sub-folder, and paste this code:
+
+        MEDIA_ROOT = BASE_DIR / 'project_images'
+        MEDIA_URL = '/project_images/'
+
+2. Then goto your app url file `urls.py` and paste this code:
+
+        from django.conf import settings
+        from django.conf.urls.static import static
+
+            if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+3. Now goto your `projects.html` file located under the templates folder in app, and paste this code:
+
+        {% for img in project_Images %}
+            <img src="http://127.0.0.1:8000/{{img.image}}" alt="" height="300" width="auto">
+            <p>{{ img.image }}</p>
+            {% endfor %}
+
+
+Now start the server:
+
+    py manage.py runserver
+
+In the browser window, type 127.0.0.1:8000/projects/ in the address bar.
