@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Projects</title>
-  </head>
-  <body>
-    {% include 'header.html' %}
+{% extends "master.html" %}
 
+{% block title %}
+  Portfolio - Projects
+{% endblock %}
+
+{% block content %}
     <h2>Our Projects</h2>
 
     {% for proj in projects %} 
@@ -19,7 +18,9 @@
         width="auto"
       />
       <h4>{{ proj.title }}</h4>
+      {% endif %} 
     </a>
-    {% endif %} {% endfor %} {% endfor %}
-  </body>
-</html>
+    {% endfor %} 
+    {% endfor %}
+
+{% endblock %}

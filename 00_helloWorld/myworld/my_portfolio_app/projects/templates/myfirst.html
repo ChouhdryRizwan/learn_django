@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends "master.html" %}
 
-<body>
-{% include 'header.html' %}
+{% block title %}
+  Home - Projects
+{% endblock %}
+
+{% block content %}
     <h1>Home</h1>
     <p>Welcome to my first Django project!</p>
 
@@ -14,7 +16,4 @@
     {% endif %}
     {% endwith %}
 
-{% include 'footer.html' %}
-</body>
-
-</html>
+{% endblock %}

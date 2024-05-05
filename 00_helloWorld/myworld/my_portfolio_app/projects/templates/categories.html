@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Categories</title>
-  </head>
-  <body>
-    {% include 'header.html' %}
+{% extends "master.html" %}
+
+{% block title %}
+  Details - Projects
+{% endblock %}
+
+{% block content %}
     <h1>This is our Categories Page</h1>
    
     <h2>Our Experties in:</h2>
@@ -13,5 +13,4 @@
       <li>{{ cat_name }}</li>
       {% endfor %}
     </ul>
-  </body>
-</html>
+{% endblock %}

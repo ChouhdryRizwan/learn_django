@@ -22,3 +22,9 @@ This is useful when you have a block of content that is the same for many pages.
 `for footer:`      
 
     {% include 'footer.html' %}
+
+Now start the server:
+
+    py manage.py runserver
+
+In the browser window, type 127.0.0.1:8000/projects/ in the address bar.        
