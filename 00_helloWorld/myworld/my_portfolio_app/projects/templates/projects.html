@@ -4,31 +4,23 @@
     <title>Projects</title>
   </head>
   <body>
-    <h1>This is our Project Page</h1>
     <a href="/">Home</a> &nbsp;&nbsp; <a href="/categories">Categories</a>
     <br />
-    <h2>Our 1st Project Name is {{ projectname }}.</h2>
 
-    {% if greeting == 1 %}
-    <h1>Hello</h1>
-    {% endif %}
-    <br />
+    <h2>Our Projects</h2>
 
-    <h2>Our Portfolio</h2>
-    {% for proj in projects %}
-    <h3>{{ proj.title }}</h3>
-    <h4>{{ proj.category }}</h4>
-    <p>{{ proj.description }}</p>
-    <p>{{ proj.date_created }}</p>
-    <a href="{{ proj.project_url }}" target="_blank">Visit</a>
-    {% endfor %}
-    <br><br>
+    {% for proj in projects %} 
     {% for img in project_Images %}
-    <img src="http://127.0.0.1:8000/{{img.image}}" alt="" height="300" width="auto">
-    <p>{{ img.image }}</p>
-    {% endfor %}
-
-
+    <a href="/details/{{proj.id}}">
+      {% if img.id == proj.id %}
+      <img
+        src="{% url 'Home' %}{{img.image}}"
+        alt="{{img}}"
+        height="100"
+        width="auto"
+      />
+      <h4>{{ proj.title }}</h4>
+    </a>
+    {% endif %} {% endfor %} {% endfor %}
   </body>
 </html>
-

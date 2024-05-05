@@ -46,3 +46,14 @@ def Category(request):
     # 'categories': ['Web Designing', 'Web Development', 'Graphic Designing'],   
   }
   return HttpResponse(template.render(context,request))
+
+
+def DetailsPage(request, id):
+  ProjectDetails = Project.objects.get(id = id)
+  Image = ProjectImage.objects.get(id = id)
+  template = loader.get_template('details.html')
+  context = {
+    'Project': ProjectDetails,
+    'Image': Image,
+  }
+  return HttpResponse(template.render(context,request))
