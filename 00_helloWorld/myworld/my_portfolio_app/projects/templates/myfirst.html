@@ -2,11 +2,9 @@
 <html>
 
 <body>
-
+{% include 'header.html' %}
     <h1>Home</h1>
     <p>Welcome to my first Django project!</p>
-    <a href="/categories">Categories</a> &nbsp;&nbsp;
-    <a href="/projects">Project</a>
 
     {% with greeting=1 %}
     {% if greeting == 1 %}
@@ -16,7 +14,7 @@
     {% endif %}
     {% endwith %}
 
-
+{% include 'footer.html' %}
 </body>
 
 </html>
